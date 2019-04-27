@@ -1,0 +1,36 @@
+{{>header}}
+<br>
+
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false"
+        aria-controls="collapse1">
+        Enviar Mensaje General
+    </button>
+</p>
+<div class="collapse" id="collapse1">
+
+    <form id="mensajegeneral" action="/savegeneralmsj" method="POST">
+        <div class="form-group">
+            <label for="tareamsj">Mensaje</label>
+            <textarea class="form-control" id="msjgeneral" rows="5"></textarea>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+    <br>
+
+</div>
+
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false"
+        aria-controls="collapse2">
+        Historial de Mensajes Generales
+    </button>
+</p>
+<div class="collapse" id="collapse2">
+    <div id="chatgeneral"> {{{mensajes}}} </div>
+</div>
+
+<script src="socket.io/socket.io.js"></script>
+<script src="sockets/admin.js"></script>
+
+{{>footer}}

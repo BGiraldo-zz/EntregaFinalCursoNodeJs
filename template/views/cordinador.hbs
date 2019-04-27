@@ -1,0 +1,81 @@
+{{>header}}
+<h3>Cordinador</h3>
+<br>
+
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample">
+        Registrar curso
+    </button>
+</p>
+<div class="collapse" id="collapseExample">
+    <form action="/registrarcurso" method="POST">
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input required type="number" class="form-control" id="id" name='id' placeholder="1234">
+        </div>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input required type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del curso">
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripcion</label>
+            <textarea required class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="valor">Valor</label>
+            <input required type="number" class="form-control" id="valor" name="valor" placeholder="0000 COP">
+        </div>
+        <div class="form-group">
+            <label for="modalidad">Modalidad</label>
+            <select class="form-control" id="modalidad" name="modalidad">
+                <option>-</option>
+                <option>Virtual</option>
+                <option>Presencial</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="intensidad">Intensidad Horaria</label>
+            <input type="number" class="form-control" id="intensidad" name="intensidad" placeholder="0 Horas">
+        </div>
+        <button>Registrar</button>
+    </form>
+</div>
+
+<br>
+
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false"
+        aria-controls="collapse2">
+        Listar Cursos
+    </button>
+</p>
+<div class="collapse" id="collapse2">
+    {{{listarCursos cursos}}}
+</div>
+
+<br>
+
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" 
+        data-target="#verasps" aria-expanded="false"
+        aria-controls="verasps">
+        Ver aspirantes
+    </button>
+</p>
+<div class="collapse" id="verasps">
+    {{{veraspirantes cursosV aspirantesV}}}
+</div>
+
+<br>
+
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false"
+        aria-controls="collapse3">
+        Cerrar Curso
+    </button>
+</p>
+<div class="collapse" id="collapse3">
+    {{{selectCursos cursos}}}
+</div>
+{{>footer}}

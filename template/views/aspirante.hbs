@@ -1,0 +1,22 @@
+{{>header}}
+<h3>Aspirante</h3>
+
+<form action="/registrarseacurso" method="POST">
+    {{{cursospararegistro cursos}}}
+    <button>Registrarse</button>
+</form>
+
+<br />
+
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false"
+        aria-controls="collapse2">
+        Cursos en los que estoy registrado
+    </button>
+</p>
+
+<div class="collapse" id="collapse2">
+    {{{listarCursos cursosRegistrado}}}
+</div>
+
+{{>footer}}

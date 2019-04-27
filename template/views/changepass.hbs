@@ -1,0 +1,19 @@
+{{>header}}
+
+<h3>Restablecer Contraseña</h3>
+ <form action="/restorepass" method="POST">
+         <div class="form-group">
+            <label for="pass">Contraseña</label>
+            <input required type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña">
+        </div>
+         <div class="form-group">
+            <label for="pass1">Confirmar Contraseña</label>
+            <input required type="password" class="form-control" id="pass1" name="pass1" placeholder="Confirmar Contraseña">
+        </div>
+         <div class="form-group">
+            <input type="hidden" name="userid" value="{{userid}}">
+        </div>
+        <button>Restablecer</button>
+    </form>
+
+{{>footer}}

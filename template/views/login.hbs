@@ -1,0 +1,30 @@
+{{>header}}
+<h3>Login</h3>
+ <form action="/ingresar" method="POST">
+         <div class="form-group">
+            <label for="usuario">Usuario</label>
+            <input required type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
+        </div>
+         <div class="form-group">
+            <label for="contrasena">Contraseña</label>
+            <input required type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña">
+        </div>
+        <button>Ingresar</button>
+    </form>
+    <p>
+        <br/><br/>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false"
+        aria-controls="collapse2">
+        Restablecer Contraseña
+    </button>
+</p>
+<div class="collapse" id="collapse2">
+     <form action="/restablecer" method="POST">
+         <div class="form-group">
+            <label for="usuarioR">Usuario</label>
+            <input required type="text" class="form-control" id="usuarioR" name="usuarioR" placeholder="Usuario">
+        </div>
+        <button>Restablecer</button>
+    </form>
+</div>
+{{>footer}}

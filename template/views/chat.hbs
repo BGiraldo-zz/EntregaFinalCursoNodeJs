@@ -1,0 +1,50 @@
+{{>header}}
+<br>
+
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false"
+        aria-controls="collapse1">
+        Enviar Mensaje
+    </button>
+</p>
+<div class="collapse" id="collapse1">
+
+    <form id="mensajeprivado">
+        {{{ selectUsuarios tipo usuarios }}}
+        <div class="form-group">
+            <label for="tareamsj">Mensaje</label>
+            <textarea class="form-control" id="msjprivado" rows="5"></textarea>
+        </div>
+        <button>Enviar</button>
+    </form>
+    <br>
+
+</div>
+
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false"
+        aria-controls="collapse3">
+        Historial de Mensajes Generales
+    </button>
+</p>
+<div class="collapse" id="collapse3">
+    <div id="chat">{{{mensajes}}}</div>
+</div>
+
+<br />
+
+<p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false"
+        aria-controls="collapse2">
+        Historial de Mensajes Privados
+    </button>
+</p>
+<div class="collapse" id="collapse2">
+    {{{ vermensajes tipo usuarios }}}
+</div>
+
+
+<script src="socket.io/socket.io.js"></script>
+<script src="sockets/client.js"></script>
+
+{{>footer}}

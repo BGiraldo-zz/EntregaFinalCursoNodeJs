@@ -1,0 +1,44 @@
+</<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Bootstrap css -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/styles.css">
+    <title>Administración de cursos</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Bienvenido! {{ nombre }}</h1>
+        </header>
+        <br>
+        <div id="browse_app">
+            <a class="btn btn-large btn-info" href="/">Home</a>
+            {{#if sesion}}
+                {{#if rol}}
+                    <a class="btn btn-large btn-info" href="cordinador">Cordinador</a>
+                {{else}}
+                    <a class="btn btn-large btn-info" href="aspirante">Aspirante</a>
+                {{/if}}
+                    <a class="btn btn-large btn-info" href="chat">Mensajes</a>
+                    <a class="btn btn-large btn-info" href="logout">Logout</a>
+            {{else}}
+                {{#if admin}} 
+                    <a class="btn btn-large btn-info" href="administrador">Administrador</a>
+                    <a class="btn btn-large btn-info" href="chatgeneral">Mensaje General</a>
+                    <a class="btn btn-large btn-info" href="logout">Logout</a>
+                {{else}}
+                    <a class="btn btn-large btn-info" href="interesado">Interesado</a>
+                    <a class="btn btn-large btn-info" href="registro">Registro</a>
+                    <a class="btn btn-large btn-info" href="login">Login</a>
+                {{/if}}
+            {{/if}}
+        </div>
+
+        <hr>
+        <div class="body">
