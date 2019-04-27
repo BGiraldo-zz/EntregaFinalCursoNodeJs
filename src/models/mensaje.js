@@ -21,6 +21,9 @@ const mensajeSchema = new Schema({
         type: String,
         required: true,
         default: new Date().toDateString()
+    },
+    nombre: {
+        type : String
     }
 });
 

@@ -88,20 +88,18 @@ const Usuario = require('./models/usuario');
 
 // methods 
 const savegeneralmsj = (mensaje) => {
-    mensaje.save((err, resultado) => {
-        if (err) {
-            return res.render('mensaje', {
-                mensaje: `<div class='alert alert-danger' role='alert'>${err}</div>`
-            });
-        }
-    })
+	mensaje.save((err, resultado) => {
+		if (err) {
+			console.log(err);
+		}
+	})
 };
 
 
 //sockets
 io.on('connection', client => {
 
-	client.on("texto", (text, callback) =>{
+	client.on("texto", (text, callback) => {
 		let fecha = new Date().toDateString()
 		let texto = `admin : ${text} - ${fecha}`
 		let mensaje = new Mensaje({
@@ -114,42 +112,51 @@ io.on('connection', client => {
 		callback()
 	})
 
-	client.on("textopriv", (text, receiverid,  callback) =>{
+	client.on("textopriv", (text, receiverid, callback) => {
 		let fecha = new Date().toDateString()
-		let mensaje = new Mensaje({
-			transmitterid: user.id,
-			receiverid: receiverid,
-			texto: text,
-			date: fecha
-		});
-		savegeneralmsj(mensaje);
-		callback()
-	})
-
-	client.on("showprivchat", (receiverid,  callback) =>{
-		Mensaje.find({$or:[ {'transmitterid': user.id, 'receiverid': receiverid},
-							{'transmitterid':receiverid, 'receiverid': user.id} ]}, (err, respuesta1) => {
+		Usuario.findOne({
+			id: user.id
+		}, (err, respuesta) => {
 			if (err) {
 				return console.log(err)
 			}
-			Usuario.findOne({ id: receiverid }, (err, respuesta2) => {
-				if (err) {
-					return console.log(err)
-				}
-				var res = '';
-				respuesta1.forEach(msj => {
-					res +='<br/>' + respuesta2.nombre + ': ' + msj.texto + ' - ' + msj.date
-				});
+			let mensaje = new Mensaje({
+				transmitterid: user.id,
+				receiverid: receiverid,
+				texto: text,
+				date: fecha,
+				nombre: respuesta.nombre
+			});
+			savegeneralmsj(mensaje);
+			callback()
+		});
+	})
 
+	client.on("showprivchat", (receiverid, callback) => {
+		Mensaje.find({
+			$or: [{
+					'transmitterid': user.id,
+					'receiverid': receiverid
+				},
+				{
+					'transmitterid': receiverid,
+					'receiverid': user.id
+				}
+			]
+		}, (err, respuesta1) => {
+			if (err) {
+				return console.log(err)
+			}
+
+			var res = '';
+			respuesta1.forEach(msj => {
+				res += '<br/>' + msj.nombre + ': ' + msj.texto + ' - ' + msj.date
 				io.emit("showmsjpriv", (res));
 			});
 		});
-		//callback()
 	})
-
 });
 
 server.listen(process.env.PORT, () => {
 	console.log('servidor en el puerto ' + process.env.PORT)
 });
-
