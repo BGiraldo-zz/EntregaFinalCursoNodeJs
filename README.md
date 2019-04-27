@@ -11,7 +11,7 @@
 4. Dirijase a su navegador de preferencia y vaya a la dirección http://localhost:3000/ para ver la aplicación ejecutandose.
 
 Revise que funcione conforme a lo que dicen las historias anexas en el pdf.
-"Entrega Final Historias de Usuario"
+"Entrega Final Historias de Usuario" **Este documento lo encontrara en la carpeta docs**
 
 **NOTA:** Tenga en cuenta que el puerto 3000 NO debe estar siendo ya usado por otro proceso y que navegadores como Chrome guardan información en cache.
 
